@@ -72,3 +72,5 @@ if uploaded_file and email_responsavel:
 
 elif uploaded_file and not email_responsavel:
     st.warning("⚠️ Por favor, selecione quem está validando os leads.")
+
+# Atualização forçada para carregar novo favicon
