@@ -9,15 +9,13 @@ st.set_page_config(
 )
 
 
-st.markdown(
-    "<div style='text-align: center;'>"
-    "<img src='https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/Marketing%20%5BBANNER%5D.png' width='600'/>"
-    "</div>",
-    unsafe_allow_html=True
+st.image(
+    "https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/Marketing%20%5BBANNER%5D.png",
+    use_column_width=True
 )
 
 st.title("Formatador de Planilha de Leads")
-st.title("ADM Soluções")
+st.header("ADM Soluções")
 st.write("Envie a planilha bruta (.xlsx) exportada do site **Casa dos Dados** para gerar a versão formatada.")
 
 st.markdown("### ⚠️ Importante:")
