@@ -11,7 +11,7 @@ st.set_page_config(
 
 st.image(
     "https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/Marketing%20%5BBANNER%5D.png",
-    use_column_width=True
+    use_container_width=True
 )
 
 st.title("Formatador de Planilha de Leads")
