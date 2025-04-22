@@ -9,7 +9,13 @@ st.set_page_config(
 )
 
 
-st.title("📊 Formatador de Planilha de Leads")
+st.markdown(
+    "<div style='text-align: center;'>"
+    "<img src='https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/logo_adm.png' width='200'/>"
+    "</div>",
+    unsafe_allow_html=True
+)
+st.title("Formatador de Planilha de Leads")
 st.title("ADM Soluções")
 st.write("Envie a planilha bruta (.xlsx) exportada do site **Casa dos Dados** para gerar a versão formatada.")
 
