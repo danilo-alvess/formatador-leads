@@ -5,8 +5,7 @@ from io import BytesIO
 
 st.set_page_config(
     page_title="Formatador de Leads - ADM Soluções",
-    page_icon="logo_adm.png",
-    layout="centered"
+    page_icon="https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/logo_adm.png"
 )
 
 
