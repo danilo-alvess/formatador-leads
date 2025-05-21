@@ -22,28 +22,26 @@ st.warning("Se estiver no celular, baixe a planilha primeiro para o dispositivo.
 
 # Lista de responsáveis
 responsaveis = {
+    "Selecione o responsável": "",
     "Amanda Prudente": "amanda.p@admsolucoes.com.br",
-    "Arthur Helber": "arthur.helber@admsolucoes.com.br",
     "Brendo Félix": "brendo@admsolucoes.com.br",
     "Carlos Eduardo": "eduardo@admsolucoes.com.br",
-    "Daina Lisboa": "daina.lisboa@admsolucoes.com.br",
     "Danilo Alves": "danilo.a@admsolucoes.com.br",
-    "Elis Lima": "elis.lima@admsolucoes.com.br",
-    "Gisele Marcelino": "gisele.marcelino@admsolucoes.com.br",
     "Grazy Marcelino": "grazy@admsolucoes.com.br",
-    "Guilherme Andrade": "guilherme.andrade@admsolucoes.com.br",
     "Jamille Costa": "jamille@admsolucoes.com.br",
-    "Joab Pinheiro": "joab.pinheiro@admsolucoes.com.br",
     "Pedro Paiva": "pedro.paiva@admsolucoes.com.br",
     "Ryan Caliel": "caliel@admsolucoes.com.br",
+    "Arthur Helber": "arthur.helber@admsolucoes.com.br",
+    "Daina Lisboa": "daina.lisboa@admsolucoes.com.br",
+    "Gisele Marcelino": "gisele.marcelino@admsolucoes.com.br",
+    "Guilherme Andrade": "guilherme.andrade@admsolucoes.com.br",
+    "Joab Pinheiro": "joab.pinheiro@admsolucoes.com.br",
+    "Elis Lima": "elis.lima@admsolucoes.com.br",
     "Vinícius Néo": "vinicius.neo@admsolucoes.com.br"
 }
 
-responsaveis_ordenados = {k: responsaveis[k] for k in sorted(responsaveis)}
-responsaveis_ordenados = {"Selecione o responsável": ""} | responsaveis_ordenados
-
-responsavel = st.selectbox("Quem está validando os leads?", list(responsaveis_ordenados.keys()))
-email_responsavel = responsaveis_ordenados[responsavel]
+responsavel = st.selectbox("Quem está validando os leads?", list(responsaveis.keys()))
+email_responsavel = responsaveis[responsavel]
 
 uploaded_file = st.file_uploader("📁 Faça o upload da planilha bruta (.xlsx)", type=["xlsx"])
 
