@@ -9,7 +9,7 @@ st.set_page_config(
 )
 
 st.image(
-    "https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/Capta%C3%A7%C3%A3o%20de%20Leads%20%5BBANNER%5D.png",
+    "https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/banner_captacao.png",
     use_container_width=True
 )
 
