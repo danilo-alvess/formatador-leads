@@ -5,7 +5,7 @@ from io import BytesIO
 
 st.set_page_config(
     page_title="Leads - ADM Soluções",
-    page_icon="https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/logo_adm.png"
+    page_icon="https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/banner_captacao.png"
 )
 
 st.image(
@@ -24,24 +24,34 @@ st.warning("Se estiver no celular, baixe a planilha primeiro para o dispositivo.
 responsaveis = {
     "Selecione o responsável": "",
     "Amanda Prudente": "amanda.p@admsolucoes.com.br",
+    "Arthur Helber": "arthur.helber@admsolucoes.com.br",
     "Brendo Félix": "brendo@admsolucoes.com.br",
     "Carlos Eduardo": "eduardo@admsolucoes.com.br",
-    "Danilo Alves": "danilo.a@admsolucoes.com.br",
-    "Grazy Marcelino": "grazy@admsolucoes.com.br",
-    "Jamille Costa": "jamille@admsolucoes.com.br",
-    "Pedro Paiva": "pedro.paiva@admsolucoes.com.br",
-    "Ryan Caliel": "caliel@admsolucoes.com.br",
-    "Arthur Helber": "arthur.helber@admsolucoes.com.br",
     "Daina Lisboa": "daina.lisboa@admsolucoes.com.br",
+    "Danilo Alves": "danilo.a@admsolucoes.com.br",
+    "Elis Lima": "elis.lima@admsolucoes.com.br",
+    "Grazy Marcelino": "grazy@admsolucoes.com.br",
     "Gisele Marcelino": "gisele.marcelino@admsolucoes.com.br",
     "Guilherme Andrade": "guilherme.andrade@admsolucoes.com.br",
+    "Jamille Costa": "jamille@admsolucoes.com.br",
     "Joab Pinheiro": "joab.pinheiro@admsolucoes.com.br",
-    "Elis Lima": "elis.lima@admsolucoes.com.br",
+    "Pedro Paiva": "pedro.paiva@admsolucoes.com.br",
+    "Ryan Caliel": "caliel@admsolucoes.com.br",
     "Vinícius Néo": "vinicius.neo@admsolucoes.com.br"
 }
 
 responsavel = st.selectbox("Quem está validando os leads?", list(responsaveis.keys()))
 email_responsavel = responsaveis[responsavel]
+
+consultores_alocados = {
+    "Gisele Marcelino": "brendo@admsolucoes.com.br",
+    "Guilherme Andrade": "brendo@admsolucoes.com.br",
+    "Vinícius Néo": "pedro.paiva@admsolucoes.com.br",
+    "Arthur Helber": "eduardo@admsolucoes.com.br",
+    "Daina Lisboa": "eduardo@admsolucoes.com.br",
+    "Grazy Marcelino": "jamille@admsolucoes.com.br",
+    "Elis Lima": "jamille@admsolucoes.com.br"
+}
 
 uploaded_file = st.file_uploader("📁 Faça o upload da planilha bruta (.xlsx)", type=["xlsx"])
 
@@ -50,23 +60,33 @@ if uploaded_file and email_responsavel:
         df_empresas = pd.read_excel(uploaded_file, sheet_name="empresas")
 
         def limpar_nome(nome):
-            return re.sub(r'[0-9.]', '', nome).strip()
+            return re.sub(r'[0-9.]', '', str(nome)).strip()
 
-        # Aplicar regras de formatação
         df_formatado = pd.DataFrame()
-        df_formatado["Nome do negócio"] = df_empresas["Nome Fantasia"].fillna(df_empresas["Razao Social"]).apply(limpar_nome)
-        df_formatado["Etapa do negócio"] = "prospect"
-        df_formatado["Proprietário do negócio"] = email_responsavel
-        df_formatado["CNPJ"] = df_empresas["CNPJ"]
-        df_formatado["Proprietário (a)"] = df_empresas["Socios"].fillna(df_empresas["Razao Social"]).apply(limpar_nome)
-        df_formatado["Celular"] = df_empresas["Telefones"]
-        df_formatado["Email"] = df_empresas["E-mail"]
-        df_formatado["Fonte"] = "Prospecção ativa"
 
-        # Adiciona coluna de status com valor padrão 'Não Validado'
+        df_formatado["Nome da empresa"] = df_empresas["Razao Social"].apply(limpar_nome)
+        df_formatado["Nome"] = df_empresas["Socios"]
+        df_formatado["Número de telefone"] = df_empresas["Telefones"]
         df_formatado["Status"] = "Não Validado"
 
-        # Converter para .xlsx em memória
+        df_formatado["Nome do negócio"] = df_empresas["Nome Fantasia"].fillna(df_empresas["Razao Social"])
+        df_formatado["Etapa do negócio"] = "prospect"
+        df_formatado["Proprietário do negócio"] = email_responsavel
+        df_formatado["Consultor alocado"] = df_empresas["Socios"].map(consultores_alocados).fillna("")
+        df_formatado["Fonte"] = "Prospecção ativa"
+        df_formatado["CNPJ"] = df_empresas["CNPJ"]
+        df_formatado["E-mail"] = df_empresas["E-mail"]
+        df_formatado["Fase do ciclo de vida"] = "Lead"
+
+        # Reordena as colunas prioritárias para o início
+        colunas_prioritarias = [
+            "Nome da empresa", "Nome", "Número de telefone", "Status"
+        ]
+        outras_colunas = [
+            col for col in df_formatado.columns if col not in colunas_prioritarias
+        ]
+        df_formatado = df_formatado[colunas_prioritarias + outras_colunas]
+
         buffer = BytesIO()
         with pd.ExcelWriter(buffer, engine="xlsxwriter") as writer:
             df_formatado.to_excel(writer, index=False, sheet_name="Formatado")
@@ -74,7 +94,7 @@ if uploaded_file and email_responsavel:
 
         st.success("✅ Arquivo formatado com sucesso!")
         st.download_button(
-            label="📥 Baixar planilha formatada",
+            label="📥 Clique aqui para baixar planilha formatada",
             data=buffer,
             file_name="Negócios - Formatado para Validar.xlsx",
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
