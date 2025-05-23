@@ -5,7 +5,7 @@ from io import BytesIO
 
 st.set_page_config(
     page_title="Leads - ADM Soluções",
-    page_icon="https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/banner_captacao.png"
+    page_icon="https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/logo_adm.png"
 )
 
 st.image(
@@ -77,6 +77,7 @@ if uploaded_file and email_responsavel:
         df_formatado["CNPJ"] = df_empresas["CNPJ"]
         df_formatado["E-mail"] = df_empresas["E-mail"]
         df_formatado["Fase do ciclo de vida"] = "Lead"
+        df_formatado["Pipeline"] = "Pipeline de vendas"
 
         # Reordena as colunas prioritárias para o início
         colunas_prioritarias = [
