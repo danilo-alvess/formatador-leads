@@ -72,7 +72,7 @@ if uploaded_file and email_responsavel:
         df_formatado["Nome do negócio"] = df_empresas["Nome Fantasia"].fillna(df_empresas["Razao Social"])
         df_formatado["Etapa do negócio"] = "prospect"
         df_formatado["Proprietário do negócio"] = email_responsavel
-        df_formatado["Consultor alocado"] = df_empresas["Socios"].map(consultores_alocados).fillna("")
+        df_formatado["Consultor alocado"] = consultores_alocados.get(responsavel, "")
         df_formatado["Fonte"] = "Prospecção ativa"
         df_formatado["CNPJ"] = df_empresas["CNPJ"]
         df_formatado["E-mail"] = df_empresas["E-mail"]
