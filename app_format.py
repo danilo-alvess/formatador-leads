@@ -42,6 +42,7 @@ responsaveis = {
 
 responsavel = st.selectbox("Quem está validando os leads?", list(responsaveis.keys()))
 email_responsavel = responsaveis[responsavel]
+email_consultor_alocado = consultores_alocados.get(responsavel, "")
 
 consultores_alocados = {
     "Gisele Marcelino": "brendo@admsolucoes.com.br",
@@ -72,7 +73,7 @@ if uploaded_file and email_responsavel:
         df_formatado["Nome do negócio"] = df_empresas["Nome Fantasia"].fillna(df_empresas["Razao Social"])
         df_formatado["Etapa do negócio"] = "prospect"
         df_formatado["Proprietário do negócio"] = email_responsavel
-        df_formatado["Consultor alocado"] = consultores_alocados.get(responsavel, "")
+        df_formatado["Consultor alocado"] = email_consultor_alocado
         df_formatado["Fonte"] = "Prospecção ativa"
         df_formatado["CNPJ"] = df_empresas["CNPJ"]
         df_formatado["E-mail"] = df_empresas["E-mail"]
