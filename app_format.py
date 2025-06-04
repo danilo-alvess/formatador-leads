@@ -41,7 +41,11 @@ responsaveis = {
     "Vinícius Néo": "vinicius.neo@admsolucoes.com.br"
 }
 
-responsavel = st.selectbox("Quem está validando os leads?", list(responsaveis.keys()))
+responsavel_opcoes = ["Selecione o responsável"] + sorted(
+    [nome for nome in responsaveis.keys() if nome != "Selecione o responsável"]
+)
+responsavel = st.selectbox("Quem está validando os leads?", responsavel_opcoes)
+
 email_responsavel = responsaveis[responsavel]
 
 # Dicionário de quem será alocado para cada responsável
@@ -64,15 +68,15 @@ if uploaded_file and email_responsavel:
         def limpar_nome(nome):
             return re.sub(r'[0-9.]', '', str(nome)).strip()
 
-        def limpar_socios(texto):
-            if pd.isna(texto):
-                return ""
-            texto = re.sub(r"(?i)Sócio-Administrador\s*-\s*", "", texto)
-            texto = re.sub(r"(?i)Sócio\s*-\s*", "", texto)
-            return texto.strip()
-
+       def limpar_socios(s):
+        s = str(s)
+        s = re.sub(r"(?i)Sócio-Administrador\s*-\s*", "", s)
+        s = re.sub(r"(?i)Sócio\s*-\s*", "", s)
+        return s.strip()
+          
+        
         df_formatado = pd.DataFrame()
-
+        
         df_formatado["Nome da empresa"] = df_empresas["Razao Social"].apply(limpar_nome)
         df_formatado["Nome"] = df_empresas["Socios"].apply(limpar_socios)
         df_formatado["Número de telefone"] = df_empresas["Telefones"]
