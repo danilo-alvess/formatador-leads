@@ -24,19 +24,19 @@ st.warning("Se estiver no celular, baixe a planilha primeiro para o dispositivo.
 responsaveis = {
     "Selecione o responsável": "",
     "Amanda Prudente": "amanda.p@admsolucoes.com.br",
+    "Arthur Helber": "arthur.helber@admsolucoes.com.br",
     "Brendo Félix": "brendo@admsolucoes.com.br",
     "Carlos Eduardo": "eduardo@admsolucoes.com.br",
-    "Danilo Alves": "danilo.a@admsolucoes.com.br",
-    "Grazy Marcelino": "grazy@admsolucoes.com.br",
-    "Jamille Costa": "jamille@admsolucoes.com.br",
-    "Pedro Paiva": "pedro.paiva@admsolucoes.com.br",
-    "Ryan Caliel": "caliel@admsolucoes.com.br",
-    "Arthur Helber": "arthur.helber@admsolucoes.com.br",
     "Daina Lisboa": "daina.lisboa@admsolucoes.com.br",
+    "Danilo Alves": "danilo.a@admsolucoes.com.br",
+    "Elis Lima": "elis.lima@admsolucoes.com.br",
+    "Grazy Marcelino": "grazy@admsolucoes.com.br",
     "Gisele Marcelino": "gisele.marcelino@admsolucoes.com.br",
     "Guilherme Andrade": "guilherme.andrade@admsolucoes.com.br",
+    "Jamille Costa": "jamille@admsolucoes.com.br",
     "Joab Pinheiro": "joab.pinheiro@admsolucoes.com.br",
-    "Elis Lima": "elis.lima@admsolucoes.com.br",
+    "Pedro Paiva": "pedro.paiva@admsolucoes.com.br",
+    "Ryan Caliel": "caliel@admsolucoes.com.br",
     "Vinícius Néo": "vinicius.neo@admsolucoes.com.br"
 }
 
@@ -63,10 +63,17 @@ if uploaded_file and email_responsavel:
         def limpar_nome(nome):
             return re.sub(r'[0-9.]', '', str(nome)).strip()
 
+        def limpar_socios(texto):
+            if pd.isna(texto):
+                return ""
+            texto = re.sub(r"(?i)Sócio-Administrador\s*-\s*", "", texto)
+            texto = re.sub(r"(?i)Sócio\s*-\s*", "", texto)
+            return texto.strip()
+
         df_formatado = pd.DataFrame()
 
         df_formatado["Nome da empresa"] = df_empresas["Razao Social"].apply(limpar_nome)
-        df_formatado["Nome"] = df_empresas["Socios"]
+        df_formatado["Nome"] = df_empresas["Socios"].apply(limpar_socios)
         df_formatado["Número de telefone"] = df_empresas["Telefones"]
         df_formatado["Status"] = "Não Validado"
 
