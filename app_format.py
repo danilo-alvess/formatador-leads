@@ -1,3 +1,25 @@
+import streamlit as st
+import pandas as pd
+import re
+from io import BytesIO
+
+st.set_page_config(
+    page_title="Leads - ADM Soluções",
+    page_icon="https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/logo_adm.png"
+)
+
+st.image(
+    "https://raw.githubusercontent.com/danilo-alvess/formatador-leads/main/banner_captacao.png",
+    use_container_width=True
+)
+
+st.title("Formatador de Planilha de Leads")
+st.header("ADM Soluções")
+st.write("Envie a planilha bruta (.xlsx) exportada do site **Casa dos Dados** para gerar a versão formatada.")
+
+st.markdown("### ⚠️ Importante:")
+st.warning("Se estiver no celular, baixe a planilha primeiro para o dispositivo. Upload direto do Google Drive pode não funcionar.")
+
 # Lista de responsáveis
 responsaveis = {
     "Selecione o responsável": "",
