@@ -70,8 +70,7 @@ if uploaded_file and email_responsavel:
 
        def limpar_socios(s):
         s = str(s)
-        s = re.sub(r"(?i)Sócio-Administrador\s*-\s*", "", s)
-        s = re.sub(r"(?i)Sócio\s*-\s*", "", s)
+        s = re.sub(r"(?i)(Sócio Pessoa Jurídica Domiciliado no Exterior|Sócio-Administrador|Sócio|Administrador)\s*-\s*", "", s)
         return s.strip()
           
         
