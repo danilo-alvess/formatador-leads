@@ -91,6 +91,7 @@ if uploaded_file and email_responsavel:
         df_formatado["CNPJ"] = df_empresas["CNPJ"]
         df_formatado["E-mail"] = df_empresas["E-mail"]
         df_formatado["Fase do ciclo de vida"] = "Lead"
+        df_formatado["Pipeline"] = "Pipeline de vendas"
 
         colunas_prioritarias = ["Nome da empresa", "Nome", "Número de telefone", "Status"]
         outras_colunas = [col for col in df_formatado.columns if col not in colunas_prioritarias]
