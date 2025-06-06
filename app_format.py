@@ -53,8 +53,7 @@ consultores_alocados = {
     "Vinícius Néo": "pedro.paiva@admsolucoes.com.br",
     "Arthur Helber": "eduardo@admsolucoes.com.br",
     "Daina Lisboa": "eduardo@admsolucoes.com.br",
-    "Grazy Marcelino": "jamille@admsolucoes.com.br",
-    "Elis Lima": "jamille@admsolucoes.com.br"
+    "Grazy Marcelino": "eduardo@admsolucoes.com.br"
 }
 
 uploaded_file = st.file_uploader("📁 Faça o upload da planilha bruta (.xlsx)", type=["xlsx"])
