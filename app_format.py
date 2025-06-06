@@ -13,7 +13,6 @@ st.image(
     use_container_width=True
 )
 
-
 st.title("Formatador de Planilha de Leads")
 st.header("ADM Soluções")
 st.write("Envie a planilha bruta (.xlsx) exportada do site **Casa dos Dados** para gerar a versão formatada.")
@@ -45,7 +44,6 @@ responsavel_opcoes = ["Selecione o responsável"] + sorted(
     [nome for nome in responsaveis.keys() if nome != "Selecione o responsável"]
 )
 responsavel = st.selectbox("Quem está validando os leads?", responsavel_opcoes)
-
 email_responsavel = responsaveis[responsavel]
 
 # Dicionário de quem será alocado para cada responsável
@@ -68,24 +66,24 @@ if uploaded_file and email_responsavel:
         def limpar_nome(nome):
             return re.sub(r'[0-9.]', '', str(nome)).strip()
 
-       def limpar_socios(s):
+        def limpar_socios(s):
             s = str(s)
-            s = re.sub(r"(?i)(Sócio Pessoa Jurídica Domiciliado no Exterior|Sócio-Administrador|Sócio|Administrador)\s*-\s*", "", s)
+            s = re.sub(
+                r"(?i)(Sócio Pessoa Jurídica Domiciliado no Exterior|Sócio-Administrador|Sócio|Administrador)\s*-\s*",
+                "",
+                s
+            )
             return s.strip()
-          
-        
+
         df_formatado = pd.DataFrame()
-        
         df_formatado["Nome da empresa"] = df_empresas["Razao Social"].apply(limpar_nome)
         df_formatado["Nome"] = df_empresas["Socios"].apply(limpar_socios)
         df_formatado["Número de telefone"] = df_empresas["Telefones"]
         df_formatado["Status"] = "Não Validado"
-
         df_formatado["Nome do negócio"] = df_empresas["Nome Fantasia"].fillna(df_empresas["Razao Social"])
         df_formatado["Etapa do negócio"] = "prospect"
         df_formatado["Proprietário do negócio"] = email_responsavel
 
-        # Preenchendo consultor alocado com base no responsável selecionado
         email_consultor_alocado = consultores_alocados.get(responsavel, "")
         df_formatado["Consultor alocado"] = email_consultor_alocado
 
@@ -94,12 +92,8 @@ if uploaded_file and email_responsavel:
         df_formatado["E-mail"] = df_empresas["E-mail"]
         df_formatado["Fase do ciclo de vida"] = "Lead"
 
-        colunas_prioritarias = [
-            "Nome da empresa", "Nome", "Número de telefone", "Status"
-        ]
-        outras_colunas = [
-            col for col in df_formatado.columns if col not in colunas_prioritarias
-        ]
+        colunas_prioritarias = ["Nome da empresa", "Nome", "Número de telefone", "Status"]
+        outras_colunas = [col for col in df_formatado.columns if col not in colunas_prioritarias]
         df_formatado = df_formatado[colunas_prioritarias + outras_colunas]
 
         buffer = BytesIO()
