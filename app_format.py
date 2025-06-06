@@ -69,9 +69,9 @@ if uploaded_file and email_responsavel:
             return re.sub(r'[0-9.]', '', str(nome)).strip()
 
        def limpar_socios(s):
-        s = str(s)
-        s = re.sub(r"(?i)(Sócio Pessoa Jurídica Domiciliado no Exterior|Sócio-Administrador|Sócio|Administrador)\s*-\s*", "", s)
-        return s.strip()
+            s = str(s)
+            s = re.sub(r"(?i)(Sócio Pessoa Jurídica Domiciliado no Exterior|Sócio-Administrador|Sócio|Administrador)\s*-\s*", "", s)
+            return s.strip()
           
         
         df_formatado = pd.DataFrame()
