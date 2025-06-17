@@ -80,7 +80,7 @@ if uploaded_file and email_responsavel:
         df_formatado["Número de telefone"] = df_empresas["Telefones"]
         df_formatado["Status"] = "Não Validado"
         df_formatado["Nome do negócio"] = df_empresas["Nome Fantasia"].fillna(df_empresas["Razao Social"])
-        df_formatado["Etapa do negócio"] = "prospect"
+        df_formatado["Etapa do negócio"] = "leads"
         df_formatado["Proprietário do negócio"] = email_responsavel
 
         email_consultor_alocado = consultores_alocados.get(responsavel, "")
