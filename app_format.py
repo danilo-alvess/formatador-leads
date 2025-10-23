@@ -24,20 +24,24 @@ st.warning("Se estiver no celular, baixe a planilha primeiro para o dispositivo.
 responsaveis = {
     "Selecione o responsável": "",
     "Amanda Prudente": "amanda.p@admsolucoes.com.br",
+    "Isabelle Alves": "isabelle.alves@admsolucoes.com.br",
+    "Andressa Passos": "andressa.passos@admsolucoes.com.br",
     "Arthur Helber": "arthur.helber@admsolucoes.com.br",
-    "Brendo Félix": "brendo@admsolucoes.com.br",
+    "Caio Gadelha": "caio.gadelha@admsolucoes.com.br",
     "Carlos Eduardo": "eduardo@admsolucoes.com.br",
     "Daina Lisboa": "daina.lisboa@admsolucoes.com.br",
     "Danilo Alves": "danilo.a@admsolucoes.com.br",
     "Elis Lima": "elis.lima@admsolucoes.com.br",
-    "Grazy Marcelino": "grazy@admsolucoes.com.br",
+    "Gabriel Gentil": "gabriel.gentil@admsolucoes.com.br",
     "Gisele Marcelino": "gisele.marcelino@admsolucoes.com.br",
-    "Guilherme Andrade": "guilherme.andrade@admsolucoes.com.br",
-    "Jamille Costa": "jamille@admsolucoes.com.br",
-    "Joab Pinheiro": "joab.pinheiro@admsolucoes.com.br",
-    "Pedro Paiva": "pedro.paiva@admsolucoes.com.br",
+    "Lívia Pordeus": "livia.pordeus@admsolucoes.com.br",
+    "Miguel Cassimiro": "miguel.cassimiro@admsolucoes.com.br",
+    "Izamor Morais": "izamor.morais@admsolucoes.com.br",
+    "Marianne Bezerra": "marianne.bezerra@admsolucoes.com.br",
+    "Nicolas Veras": "nicolas.veras@admsolucoes.com.br",
     "Ryan Caliel": "caliel@admsolucoes.com.br",
-    "Vinícius Néo": "vinicius.neo@admsolucoes.com.br"
+    "Suzanne Santos": "suzanne.santos@admsolucoes.com.br",
+    "Tércio da Costa": "tercio.costa@admsolucoes.com.br",
 }
 
 responsavel_opcoes = ["Selecione o responsável"] + sorted(
@@ -114,3 +118,4 @@ if uploaded_file and email_responsavel:
 
 elif uploaded_file and not email_responsavel:
     st.warning("⚠️ Por favor, selecione quem está validando os leads.")
+
