@@ -109,11 +109,11 @@ if uploaded_file and email_responsavel:
 
         # Formatação do número do pedido com 3 dígitos e hora/data
         agora = datetime.now(ZoneInfo("America/Fortaleza"))
-        hora_formatada = agora.strftime("%H:%M")
-        data_formatada = agora.strftime("%d/%m")
+        hora_formatada = agora.strftime("%H.%M")
+        data_formatada = agora.strftime("%d.%m")
 
         # Monta o nome do arquivo
-        nome_arquivo = f"Negócios Formatado - {responsavel} ({hora_formatada}.{data_formatada}).xlsx"
+        nome_arquivo = f"Lista Formatada - {responsavel} ({hora_formatada}-{data_formatada}).xlsx"
 
         st.success("✅ Arquivo formatado com sucesso!")
         st.download_button(
@@ -128,6 +128,7 @@ if uploaded_file and email_responsavel:
 
 elif uploaded_file and not email_responsavel:
     st.warning("⚠️ Por favor, selecione quem está validando os leads.")
+
 
 
 
