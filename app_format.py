@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import re
 from io import BytesIO
+from datetime import datetime
 
 st.set_page_config(
     page_title="Leads - ADM Soluções",
@@ -105,11 +106,19 @@ if uploaded_file and email_responsavel:
             df_formatado.to_excel(writer, index=False, sheet_name="Formatado")
         buffer.seek(0)
 
+        # Formatação do número do pedido com 3 dígitos e hora/data
+        agora = datetime.now()
+        hora_formatada = agora.strftime("%H:%M")
+        data_formatada = agora.strftime("%d/%m")
+
+        # Monta o nome do arquivo
+        nome_arquivo = f"Negócios Formatado - {responsavel} ({numero_formatado}.{hora_formatada}.{data_formatada}).xlsx"
+
         st.success("✅ Arquivo formatado com sucesso!")
         st.download_button(
             label="📥 Clique aqui para baixar planilha formatada",
             data=buffer,
-            file_name="Negócios - Formatado para Validar.xlsx",
+            file_name=nome_arquivo,
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
 
@@ -118,4 +127,5 @@ if uploaded_file and email_responsavel:
 
 elif uploaded_file and not email_responsavel:
     st.warning("⚠️ Por favor, selecione quem está validando os leads.")
+
 
