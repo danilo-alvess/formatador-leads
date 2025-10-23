@@ -112,7 +112,7 @@ if uploaded_file and email_responsavel:
         data_formatada = agora.strftime("%d/%m")
 
         # Monta o nome do arquivo
-        nome_arquivo = f"Negócios Formatado - {responsavel} ({numero_formatado}.{hora_formatada}.{data_formatada}).xlsx"
+        nome_arquivo = f"Negócios Formatado - {responsavel} ({hora_formatada}.{data_formatada}).xlsx"
 
         st.success("✅ Arquivo formatado com sucesso!")
         st.download_button(
@@ -127,5 +127,6 @@ if uploaded_file and email_responsavel:
 
 elif uploaded_file and not email_responsavel:
     st.warning("⚠️ Por favor, selecione quem está validando os leads.")
+
 
 
