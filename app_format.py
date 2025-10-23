@@ -3,6 +3,7 @@ import pandas as pd
 import re
 from io import BytesIO
 from datetime import datetime
+from zoneinfo import ZoneInfo
 
 st.set_page_config(
     page_title="Leads - ADM Soluções",
@@ -107,7 +108,7 @@ if uploaded_file and email_responsavel:
         buffer.seek(0)
 
         # Formatação do número do pedido com 3 dígitos e hora/data
-        agora = datetime.now()
+        agora = datetime.now(ZoneInfo("America/Fortaleza"))
         hora_formatada = agora.strftime("%H:%M")
         data_formatada = agora.strftime("%d/%m")
 
@@ -127,6 +128,7 @@ if uploaded_file and email_responsavel:
 
 elif uploaded_file and not email_responsavel:
     st.warning("⚠️ Por favor, selecione quem está validando os leads.")
+
 
 
 
