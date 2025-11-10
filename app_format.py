@@ -16,7 +16,6 @@ st.image(
 )
 
 st.title("Formatador de Planilha de Leads")
-st.header("ADM Soluções")
 st.write("Envie a planilha bruta (.xlsx) exportada do site **Casa dos Dados** para gerar a versão formatada.")
 
 st.markdown("### ⚠️ Importante:")
@@ -128,6 +127,7 @@ if uploaded_file and email_responsavel:
 
 elif uploaded_file and not email_responsavel:
     st.warning("⚠️ Por favor, selecione quem está validando os leads.")
+
 
 
 
