@@ -276,6 +276,7 @@ st.sidebar.button("Configurações")
 # RODAPÉ
 # ---------------------------
 st.markdown(
-    '<div class="adm-footer">© 2025 ADM Soluções • Desenvolvido por Danilo Alves</div>',
+    '<div class="adm-footer">© 2025 ADM Soluções • Desenvolvido por Danilenda</div>',
     unsafe_allow_html=True
 )
+
