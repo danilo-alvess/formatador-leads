@@ -68,13 +68,6 @@ st.sidebar.image("Logos.png")
 st.sidebar.title("Captação de Leads")
 st.sidebar.button("Configurações")
 
-# ---------------------------
-# RODAPÉ
-# ---------------------------
-st.markdown(
-    '<div class="adm-footer">© 2025 ADM Soluções • Desenvolvido por Danilenda</div>',
-    unsafe_allow_html=True
-)
 
 # Lista de responsáveis
 responsaveis = {
@@ -281,5 +274,12 @@ elif chosen_tab == "Dashboard":
     st.info("Área de visualização em desenvolvimento.")
 
 
+# ---------------------------
+# RODAPÉ
+# ---------------------------
+st.markdown(
+    '<div class="adm-footer">© 2025 ADM Soluções • Desenvolvido por Danilenda</div>',
+    unsafe_allow_html=True
+)
 
 
