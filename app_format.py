@@ -61,6 +61,21 @@ chosen_tab = hc.option_bar(
     horizontal_orientation=True
 )
 
+# ---------------------------
+# SIDEBAR
+# ---------------------------
+st.sidebar.image("Logos.png")
+st.sidebar.title("Captação de Leads")
+st.sidebar.button("Configurações")
+
+# ---------------------------
+# RODAPÉ
+# ---------------------------
+st.markdown(
+    '<div class="adm-footer">© 2025 ADM Soluções • Desenvolvido por Danilenda</div>',
+    unsafe_allow_html=True
+)
+
 # Lista de responsáveis
 responsaveis = {
     "Selecione o responsável": "",
@@ -265,19 +280,6 @@ elif chosen_tab == "Dashboard":
     st.markdown("### 📊 Dashboard")
     st.info("Área de visualização em desenvolvimento.")
 
-# ---------------------------
-# SIDEBAR
-# ---------------------------
-st.sidebar.image("Logos.png")
-st.sidebar.title("Captação de Leads")
-st.sidebar.button("Configurações")
 
-# ---------------------------
-# RODAPÉ
-# ---------------------------
-st.markdown(
-    '<div class="adm-footer">© 2025 ADM Soluções • Desenvolvido por Danilenda</div>',
-    unsafe_allow_html=True
-)
 
 
