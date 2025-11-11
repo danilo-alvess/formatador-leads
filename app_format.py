@@ -67,6 +67,7 @@ chosen_tab = hc.option_bar(
 st.sidebar.image("Logos.png")
 st.sidebar.title("Captação de Leads")
 st.sidebar.button("Configurações")
+st.sidebar.markdown("Version: 2.0.3")
 
 
 # Lista de responsáveis
@@ -281,5 +282,6 @@ st.markdown(
     '<div class="adm-footer">© 2025 ADM Soluções • Desenvolvido por Danilenda</div>',
     unsafe_allow_html=True
 )
+
 
 
