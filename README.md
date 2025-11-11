@@ -7,9 +7,9 @@ Acesse seu link personalizado da pesquisa na Casa dos Dados:
 Exemplo: https://portal.casadosdados.com.br/plataforma/pesquisa?pesquisaId=xxxxxxxx
 Faça login com seu usuário e senha.
 
-Exporte uma planilha com até 100 leads.
+Exporte uma planilha com leads.
 
-Faça o deploy do Web App e acesse ele
+Acesse do Web App
 
 Envie a planilha bruta para formatação.
 O app irá transformar os dados automaticamente conforme os critérios definidos para importação no HubSpot.
