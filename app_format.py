@@ -215,7 +215,7 @@ elif chosen_tab == "LIMPEZA":
         return df_validados
 
     # Upload dentro da aba correta
-    uploaded_file_l = st.file_uploader("📎 Enviar planilha formatada (.xlsx)", type=["xlsx"])
+    uploaded_file_l = st.file_uploader("📁 Faça o upload da planilha formatada (.xlsx)", type=["xlsx"])
 
     if uploaded_file_l:
         df_validados = limpar_planilha(uploaded_file_l)
@@ -279,4 +279,5 @@ st.markdown(
     '<div class="adm-footer">© 2025 ADM Soluções • Desenvolvido por Danilenda</div>',
     unsafe_allow_html=True
 )
+
 
