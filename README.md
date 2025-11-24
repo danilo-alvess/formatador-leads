@@ -1,4 +1,4 @@
-# 🚀 **ADM Soluções – App de Captação e Formatação de Leads**
+#**App de Captação e Formatação de Leads**
 
 Este é um aplicativo desenvolvido com **Streamlit** para otimizar o processo de **validação, formatação e limpeza de leads** da ADM Soluções.
 O app permite transformar planilhas brutas exportadas da Casa dos Dados em arquivos prontos para importação no **HubSpot**, além de gerar uma versão apenas com os **leads validados**.
