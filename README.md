@@ -1,7 +1,3 @@
-Claro! Aqui está um **README completo e profissional** para o seu app, já estruturado para ser usado no GitHub ou na documentação do projeto:
-
----
-
 # 🚀 **ADM Soluções – App de Captação e Formatação de Leads**
 
 Este é um aplicativo desenvolvido com **Streamlit** para otimizar o processo de **validação, formatação e limpeza de leads** da ADM Soluções.
@@ -126,5 +122,3 @@ hydralit_components
 📆 Versão atual: **2.0.3**
 
 ---
-
-Se quiser, posso gerar **uma versão visual com badges** e **imagem para o topo do README**. Quer? 😄
