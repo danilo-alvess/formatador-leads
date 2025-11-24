@@ -1,40 +1,130 @@
-# formatador-leads
-Web App – Formatação de Planilhas (Casa dos Dados → HubSpot)
-Este Web App foi desenvolvido para facilitar o processo de formatação de planilhas exportadas da plataforma Casa dos Dados, com o objetivo de prepará-las para importação no HubSpot.
+Claro! Aqui está um **README completo e profissional** para o seu app, já estruturado para ser usado no GitHub ou na documentação do projeto:
 
-🧩 Etapas do processo
-Acesse seu link personalizado da pesquisa na Casa dos Dados:
-Exemplo: https://portal.casadosdados.com.br/plataforma/pesquisa?pesquisaId=xxxxxxxx
-Faça login com seu usuário e senha.
+---
 
-Exporte uma planilha com leads.
+# 🚀 **ADM Soluções – App de Captação e Formatação de Leads**
 
-Acesse do Web App
+Este é um aplicativo desenvolvido com **Streamlit** para otimizar o processo de **validação, formatação e limpeza de leads** da ADM Soluções.
+O app permite transformar planilhas brutas exportadas da Casa dos Dados em arquivos prontos para importação no **HubSpot**, além de gerar uma versão apenas com os **leads validados**.
 
-Envie a planilha bruta para formatação.
-O app irá transformar os dados automaticamente conforme os critérios definidos para importação no HubSpot.
+---
 
-Baixe a versão final da planilha formatada.
-Essa versão já está pronta para ser importada no CRM.
+## 📌 **Funcionalidades Principais**
 
-📄 Formato esperado da planilha final
-A planilha gerada pelo Web App conterá as seguintes colunas, de acordo com os requisitos do HubSpot:
+### 🧾 **1. FORMATAÇÃO DE LEADS**
 
-Nome do negócio
+* Upload de planilha bruta (`empresas.xlsx`) obtida na Casa dos Dados.
+* Seleção do responsável pela validação → gera automaticamente:
 
-Etapa do negócio
+  * E-mail do responsável
+  * Consultor alocado
+  * Estrutura final das colunas
+  * Formatação automática do **Nome do Arquivo** com hora/data.
+* Download da planilha **pronta para o HubSpot**.
 
-Proprietário do negócio
+---
 
+### 🧹 **2. LIMPEZA DE LEADS**
+
+* Upload de uma planilha **Já formatada**.
+* O app filtra apenas os leads com status `"Validado"` ou `"Sim"`.
+* Gera um novo arquivo com **apenas os leads aprovados**, também com nome formatado automaticamente.
+
+---
+
+### 📊 **3. DASHBOARD (em desenvolvimento)**
+
+* Área reservada para métricas de captação e performance.
+
+---
+
+## 🧠 **Tecnologias Utilizadas**
+
+| Ferramenta          | Utilização                    |
+| ------------------- | ----------------------------- |
+| Streamlit           | Interface interativa          |
+| Pandas              | Manipulação da planilha       |
+| Hydralit Components | Navbar superior               |
+| Regex (re)          | Limpeza de nomes e sócios     |
+| XlsxWriter          | Exportação em Excel           |
+| ZoneInfo            | Data e hora local (Fortaleza) |
+
+---
+
+## 📂 **Estrutura de Arquivo da Planilha Bruta Esperada**
+
+A planilha de entrada deve conter a **aba `empresas`** com as colunas:
+
+```
+Razao Social
+Nome Fantasia
+Socios
+Telefones
 CNPJ
-
-Proprietário(a)
-
-Celular
-
 E-mail
+```
 
-Fonte
+---
 
-🔐 Importante
-Este projeto não compartilha nem armazena dados sensíveis. Nenhuma chave de API ou informação confidencial está presente no repositório.
+## 🔄 **Colunas Geradas na Planilha Formatada**
+
+Após o processamento, o app gera uma planilha com a seguinte estrutura:
+
+| Nome do negócio | Etapa do negócio | Proprietário do negócio | Consultor alocado | Fonte | Nome da empresa | CNPJ | E-mail | Nome | Fase do ciclo de vida | Número de telefone | Status | Pipeline |
+| --------------- | ---------------- | ----------------------- | ----------------- | ----- | --------------- | ---- | ------ | ---- | --------------------- | ------------------ | ------ | -------- |
+
+---
+
+## ▶️ **Como Rodar Localmente**
+
+### **1. Clone o repositório**
+
+```bash
+git clone https://github.com/SEU-USUARIO/SEU-REPO.git
+cd SEU-REPO
+```
+
+### **2. Instale as dependências**
+
+```bash
+pip install -r requirements.txt
+```
+
+### **3. Execute o app**
+
+```bash
+streamlit run app.py
+```
+
+---
+
+## ⚙️ **Arquivo `requirements.txt` sugerido**
+
+```txt
+streamlit
+pandas
+openpyxl
+xlsxwriter
+hydralit_components
+```
+
+---
+
+## 💡 **Melhorias Futuras**
+
+* Dashboard com KPIs de captação (MQL, SQL, taxa de conversão etc.).
+* Login por e-mail ADM.
+* Histórico das formatações por usuário.
+* Integração com API HubSpot.
+* Automação do download direto da Casa dos Dados.
+
+---
+
+## 👨‍💻 **Desenvolvido por**
+
+**Danilenda 🐶** – Analista de Marketing da ADM Soluções
+📆 Versão atual: **2.0.3**
+
+---
+
+Se quiser, posso gerar **uma versão visual com badges** e **imagem para o topo do README**. Quer? 😄
